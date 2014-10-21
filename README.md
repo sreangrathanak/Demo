@@ -21,8 +21,8 @@ The model names you must use
 - other model (if you need)
 
 My system
-- is deployed on Heroku
+- is deployed on <a href="http://calm-sierra-7958.herokuapp.com/">Heroku</a>
 
 My code
-- is uploaded on Github
+- is uploaded on <a href="https://github.com/sreangrathanak/Demo">Github</a>
 
