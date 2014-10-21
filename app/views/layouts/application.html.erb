@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Demo</title>
+  <title><%=full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!--Looking for file name _shim.html.erb in app/views/layouts/-->
+  <%= render 'layouts/shim' %>
 </head>
 <body>
-
-<%= yield %>
-
+	<!--Start Head of page-->
+	<!--Looking for file name _header.html.erb in app/views/layouts/-->
+	<%= render 'layouts/header' %>
+    <!--End Head of page-->
+    <div class="container">
+      <%= yield %>
+      <!--Looking for file name _footer.html.erb in app/views/layouts/-->
+      <%= render 'layouts/footer' %>
+    </div>
 </body>
 </html>
