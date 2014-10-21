@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
 #user before_save callback to downcase user email before saving
-before_save{self.email=email.downcase}
+before_save{email.downcase!}
 # make sure field name in table User is not blank
 #limit user name length to not longer than 59 character
 validates :name, presence: true, length: {maximum:59}
 #declare constant variable for hold the email correct format
-VALID_EMAIL_REGEX= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+VALID_EMAIL_REGEX=/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 # make sure field email in table User is not blank
 #limit user email length to not longer than 101 character
 #put the format to user emails

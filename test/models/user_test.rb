@@ -26,13 +26,6 @@ class UserTest < ActiveSupport::TestCase
   	#assert_not method use to return true if user email is empty or nil
   	assert_not @user.valid?
   end
-  #test if user password is not empty
-  #test "user password should be present" do
-  #	#set user password to empty
-  #	@user.user_password=""
-  #	#assert method use to return true if user password is empty or nil
-  #	assert_not @user.valid?
-  #end
   #test if user name is longer than limit length
   test "user name should not be longer than 60 charater" do
   	#set user name to letter a for 60 length
@@ -47,6 +40,18 @@ class UserTest < ActiveSupport::TestCase
   	#assert_not method use to return true if user email is longer than 100 or nil
   	assert_not @user.valid?
   end
+  #test user email save as downcase
+  test "user email should save as downcase" do
+  	#define variable to contain email with mix case
+  	mixed_case_email="Jame@SamRa.CoM"
+  	#set user email to mixed case email
+  	@user.email=mixed_case_email
+  	#save the user
+  	@user.save
+  	#check if user mail have been saved in downdcase or not?
+  	assert_equal mixed_case_email.downcase, @user.reload.email
+  end
+
   #test if user password minimum requiement
   test "user password minimum" do
   	#check if use password = password confirmation and = "a" *5 digit
