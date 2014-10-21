@@ -18,7 +18,7 @@ The model names you must use
 - User
 - Entry
 - Comment
-- other model (if you need)
+- other model 
 
 My system
 - is deployed on Heroku
