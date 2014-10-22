@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/new'
-
   #get 'home_pages/home'
   root 'home_pages#home'
   #get 'home_pages/help'
@@ -11,7 +9,8 @@ Rails.application.routes.draw do
   get 'contact' => 'home_pages#contact'
   #get 'users/new'
   get 'signup' =>'users#new'
-  
+  #get all resources users have index, show, new, create, edit, update,destroy
+  resources :users
   
   
  
