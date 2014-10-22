@@ -31,5 +31,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     #assert_template to check that a failed submission re-renders the show action
     assert_template 'users/show'
+    #to check that it sussec sign in or not
+    assert is_signed_in?
   end
 end

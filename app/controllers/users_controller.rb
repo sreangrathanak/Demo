@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	#if user is saved successful.
   	if @user.save
+      #call methods from session helper to get the @user id
+      sign_in @user
   		# use flash method to store message with it key 
   		flash[:success]="Welcome to the Demo App!"
   		# redirect to user url

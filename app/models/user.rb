@@ -15,4 +15,13 @@ validates :email, presence: true, length: {maximum: 99},format:{with: VALID_EMAI
 has_secure_password
 #limit the minimum 6 digits
 validates :password, length:{minimum: 6}
+
+# define method to return the hash digest of the given string
+def User.digest(string)
+	#declare cost variable to get cost from BCrypt
+	cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+	#cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :BCrypt::Engine.cost
+	#return password that convert from string given
+	BCrypt::Password.create(string, cost: cost)
+end
 end
