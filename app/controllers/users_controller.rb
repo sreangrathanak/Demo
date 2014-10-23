@@ -1,8 +1,18 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user, only:[:edit,:update, :destroy]
+  #before_action :correct_user, only:[:edit,:update]
+  before_action :admin_user,     only: :destroy
+  #action new user
   def new
   	#declare user variabel with assign new user
   	@user=User.new
   end
+  #action index
+  def index
+    #get user all and show in slide bar
+    @users=User.paginate(page: params[:page])
+  end
+  #action show user
   def show
   	#assign variable @user from  User table find by the id come from params method
   	#the variable user can be use any where
@@ -10,9 +20,9 @@ class UsersController < ApplicationController
   	#use to see what is going on on my App by using debuger method
   	#debugger
   end
-  #Define method for create user
+  #action create user
   def create
-  	#declear user variale to get new user from methos user_params
+  	#declear user variale to get new user from methos user_params which body at down bottom
   	@user = User.new(user_params)
   	#if user is saved successful.
   	if @user.save
@@ -26,12 +36,54 @@ class UsersController < ApplicationController
   		render 'new'
   	end
   end
-
+  #action edit
+  def edit
+    #declare user and init from table User find by id in params
+    @user=User.find(params[:id])
+  end
+  #action update
+  def update
+    @user=User.find(params[:id])
+    # if user can update its attribute from methos user_params which body at down bottom
+    if @user.update_attributes(user_params)
+      #show message about successful edit
+      flash[:success]="Profile update"
+      #link to user page 
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+  #action destroy
+  def destroy
+    #find user by id and destroy
+    User.find(params[:id]).destroy
+    #show message about destroy
+    flash[:success] = "User deleted"
+    #reload link to all user
+    redirect_to users_url
+  end
   #private section
   private
   #define methods user_params
   def user_params
   	#return  the user with the permit variable 
   	params.require(:user).permit(:name,:email,:password,:password_confirmation)
+  end
+  #define method to confirme that user is signed in
+  def signed_in_user
+    #call and check on method signed_in from session helper if not user login
+    unless signed_in?
+      #show message to the user
+      flash[:danger]="Please sign in"
+      #link to sign in page
+      redirect_to signin_url
+    end
+  end
+  #define method to comfirme that user is correct
+  def correct_user
+    @user=User.find(params[:id])
+    #return to root if user !=current user
+    redirect_to(root_url) unless current_user?(@user)
   end
 end

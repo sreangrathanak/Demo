@@ -14,7 +14,8 @@ validates :email, presence: true, length: {maximum: 99},format:{with: VALID_EMAI
 #user to enforces validation on user_password and user_password_confirmation
 has_secure_password
 #limit the minimum 6 digits
-validates :password, length:{minimum: 6}
+#also allow blank
+validates :password, length:{minimum: 6}, allow_blank: true
 
 # define method to return the hash digest of the given string
 def User.digest(string)
