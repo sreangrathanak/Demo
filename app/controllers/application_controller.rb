@@ -4,4 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   #add include SessionHelper
    include SessionsHelper
+
+   #private block
+   #Confirms a signed in user
+   def signed_in_user
+   		unless signed_in?
+   			store_location
+   			flash[:danger]="Please Sign in."
+   			redirect_to signin_url
+   		end
+   end
 end

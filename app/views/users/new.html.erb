@@ -5,21 +5,8 @@
   <div class="col-md-6 col-md-offset-3">
 		<!--Create form for user sing up-->
 		<%= form_for(@user) do |f|%>
-			<!--go throw and open fiel at app/view/shared/_error_messages.html.erb-->
-			<%= render 'shared/error_messages' %>
-			
-			<!--create label name and text field for store name in the form-->
-			<%= f.label :name %>
-      		<%= f.text_field :name, class: 'form-control' %>
-			<!--create label email and text field for store email in the form-->
-      		<%= f.label :email %>
-      		<%= f.text_field :email, class: 'form-control' %>
-      		<!--create label password and password field for store password in the form-->
-      		<%= f.label :password %>
-      		<%= f.password_field :password ,class: 'form-control'%>
-      		<!--create label password confirmation and password field for store password confirmation in the form-->
-      		<%= f.label :password_confirmation, "Confirmation" %>
-      		<%= f.password_field :password_confirmation,class: 'form-control' %>
+			<!--load file at app/view/users/_fields/html/erb to use in form-->
+                  <%=render 'fields', f: f%>
       		<!--create button sign up in the form-->
       		<%= f.submit "Create my account", class: "btn btn-primary" %>
 		<%end%>

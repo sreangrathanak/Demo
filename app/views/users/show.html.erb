@@ -12,4 +12,18 @@
 			</h1>
 		</section>
 	</aside>
+	<!--set some style to the Entries-->
+	<div class="col-md-8">
+	<!--check if user have any entries-->
+    <% if @user.entries.any? %>
+    <!--count user  entries-->
+      <h3>Entries (<%= @user.entries.count %>)</h3>
+      <ol class="entries">
+      <!--load file at app/view/entries/_entry.html.erb-->
+        <%= render @entries %>
+      </ol>
+      <!--put slide bar to entries-->
+      <%= will_paginate @entries %>
+    <% end %>
+  </div>
 </div>

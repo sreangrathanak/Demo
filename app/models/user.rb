@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+#relationship with model Entry
+# dependent: :destroy arranges for the dependent microposts to be destroyed when the user itself is destroyed
+has_many :entries, dependent: :destroy
 #user before_save callback to downcase user email before saving
 before_save{email.downcase!}
 # make sure field name in table User is not blank
@@ -24,5 +27,10 @@ def User.digest(string)
 	#cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :BCrypt::Engine.cost
 	#return password that convert from string given
 	BCrypt::Password.create(string, cost: cost)
+end
+#define feed for user entry
+def feed
+	#This is will show all Entries of user
+	Entry.where("user_id= ?", id)
 end
 end

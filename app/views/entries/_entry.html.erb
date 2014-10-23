@@ -1,0 +1,26 @@
+<!--link to entry follow its id-->
+<li id="entry-<%= entry.id %>">
+<!--show image of user who post entries-->
+  <%= link_to gravatar_for(entry.user, size: 50), entry.user %>
+  <!--show name of user who post-->
+  <span class="user"><%= link_to entry.user.name, entry.user %></span>
+  <span class="title">
+  <!--show the time posted-->
+  Date: <%= entry.date_post %>
+  <!--show the title of entries-->
+  <br>Title: <%= entry.title %>
+  <!--show the body of entries-->
+  <br>Body:<%= entry.body %>
+  <!--show the Image of entries-->
+   <%= image_tag entry.picture.url if entry.picture? %>
+  </span>
+  <!--show the date post of entries-->  
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(entry.created_at) %> ago.
+    <!--if the current user is the user post that entry-->
+    <%if current_user?(entry.user)%>
+    <!--link to delete the entry and ask user for sure-->
+        <%= link_to "delete",entry, method: :delete, data: {confirm: "You sure?"}, title: entry.title%>
+    <% end %>
+  </span>
+</li>

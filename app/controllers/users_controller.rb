@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   	#assign variable @user from  User table find by the id come from params method
   	#the variable user can be use any where
   	@user=User.find(params[:id])
+    #show the user entries
+    @entries = @user.entries.paginate(page: params[:page])
   	#use to see what is going on on my App by using debuger method
   	#debugger
   end

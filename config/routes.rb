@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   delete 'signout'=>'sessions#destroy'
   #get all resources users have index, show, new, create, edit, update,destroy
   resources :users
-  
+  resources :entries,          only: [:create, :destroy]
   
  
 end

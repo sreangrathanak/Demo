@@ -25,3 +25,12 @@ User.create!(name:  "Example User",
                password:              password,
                password_confirmation: password)
 end
+#
+users = User.order(:created_at).take(6)
+# loop 50 time
+50.times do
+
+  title = Faker::Lorem.sentence(5)
+  body = Faker::Lorem.sentence(9)
+  users.each { |user| user.entries.create!(title: title,body: body,date_post: Time.zone.now) }
+end
