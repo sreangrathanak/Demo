@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   #get all resources users have index, show, new, create, edit, update,destroy
   resources :users
   resources :entries,          only: [:create, :destroy]
-  
- 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end 
+ resources :relationships, only: [:create, :destroy]
 end

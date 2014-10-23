@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
+  #put some permision before some action
+  # add  ":following,:followers" if don't want non-sign user can view our follower following
   before_action :signed_in_user, only:[:edit,:update, :destroy]
-  #before_action :correct_user, only:[:edit,:update]
-  before_action :admin_user,     only: :destroy
+  #before_action :correct_user, only:[:edit,:update, :destroy]
+  #to set only user admin can remove other user other current user cannot just remove comment under
+  #before_action :admin_user,     only: :destroy
   #action new user
   def new
   	#declare user variabel with assign new user
@@ -64,6 +67,28 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     #reload link to all user
     redirect_to users_url
+  end
+  #define method following
+  def following
+    #declare variable for title
+    @title="Following"
+    #declare variable for get user data from table User
+    @user=User.find(params[:id])
+    #declare variable for store all user that following
+    @users=@user.following.paginate(page: params[:page])
+    #load file at app/view/user/_show_follow.html.erb
+    render 'show_follow'
+  end
+  #define method follower
+  def followers
+    #declare variable for title
+    @title="Followers"
+    #declare variable for get user data from table User
+    @user=User.find(params[:id])
+    #declare variable for store all user who are follow you
+    @users=@user.followers.paginate(page: params[:page])
+    #load file at app/view/user/_show_follow.html.erb
+    render 'show_follow'
   end
   #private section
   private

@@ -6,7 +6,7 @@
   <span class="user"><%= link_to entry.user.name, entry.user %></span>
   <span class="title">
   <!--show the time posted-->
-  Date: <%= entry.date_post %>
+  Date: <%= Date.parse (entry.created_at.to_s) %>
   <!--show the title of entries-->
   <br>Title: <%= entry.title %>
   <!--show the body of entries-->

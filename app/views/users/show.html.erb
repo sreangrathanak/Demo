@@ -11,9 +11,15 @@
 			  <%= @user.name %>
 			</h1>
 		</section>
+		<section class="status">
+			<!--load file at app/view/shared/_status.html.erb-->
+			<%=render 'shared/status'%>
+		</section>
 	</aside>
 	<!--set some style to the Entries-->
 	<div class="col-md-8">
+	<!--show the follow or unfollow button when user signed in-->
+	<%= render 'follow_form' if signed_in?%>
 	<!--check if user have any entries-->
     <% if @user.entries.any? %>
     <!--count user  entries-->

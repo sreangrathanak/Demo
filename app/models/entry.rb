@@ -14,7 +14,17 @@ class Entry < ActiveRecord::Base
   #should valid with image size
   validate :picture_size
 
-
+  def Entry.from_users_followed_by (user)
+    ##declare follow ids and init from user following ids
+    #following_ids=user.following_ids
+    ##find and return by replacing into string 
+    #where("user_id IN (:following_ids) OR user_id= :user_id", following_ids: following_ids,user_id: user)
+    
+    #declare follow ids and init from sql select from table relationship
+    following_ids = "SELECT followed_id FROM relationships WHERE  follower_id = :user_id"
+    ##find and return by replacing into string aql 
+    where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: user)
+  end
   #private part
   private
   #define method to check size of image
