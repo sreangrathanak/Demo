@@ -7,10 +7,10 @@
   <span class="title">
   <!--show the time posted-->
   Date: <%= Date.parse (entry.created_at.to_s) %>
-  <!--show the title of entries-->
-  <br>Title: <%= entry.title %>
+  <!--show the title of entries link link to its entry-->
+  <br><%= link_to entry.title, entry, method: :get ,title: entry.title%>
   <!--show the body of entries-->
-  <br>Body:<%= entry.body %>
+  <br><%= entry.body %>
   <!--show the Image of entries-->
    <%= image_tag entry.picture.url if entry.picture? %>
   </span>

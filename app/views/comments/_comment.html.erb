@@ -1,0 +1,12 @@
+<!--link to entry follow its id-->
+<li id="comment-<%= comment.id %>">
+<!--show image of user who post entries-->
+  <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
+  <!--show name of user who post-->
+  <span class="user"><%= link_to comment.user.name, comment.user %></span>
+  <span class="title">
+  <!--show the time posted-->
+  Date: <%= Date.parse (comment.created_at.to_s) %>
+  <!--show the body of entries-->
+  <br><%= comment.content %>
+</li>

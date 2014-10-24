@@ -42,3 +42,15 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+users = User.order(:created_at).take(6)
+entries = Entry.order(:created_at).take(6)
+# loop 50 time
+50.times do
+  content = Faker::Lorem.sentence(5)
+  entries.each { |entry| 
+    users.each{|user|
+    entry.comments.create!(content: content,user_id: user.id) 
+  }
+}
+end

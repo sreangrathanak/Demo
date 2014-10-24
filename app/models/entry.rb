@@ -1,4 +1,6 @@
 class Entry < ActiveRecord::Base
+  # dependent: :destroy arranges for the dependent comment to be destroyed when the user itself is destroyed
+  has_many :comments, dependent: :destroy
   #add relationship to model user
   belongs_to :user
   #set default by order

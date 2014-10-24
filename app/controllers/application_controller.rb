@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
    #Confirms a signed in user
    def signed_in_user
    		unless signed_in?
-   			store_location
+   			#store_location
    			flash[:danger]="Please Sign in."
    			redirect_to signin_url
    		end

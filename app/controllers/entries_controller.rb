@@ -28,7 +28,13 @@ def destroy
 	#link user  or else root path
 	redirect_to request.referrer || root_url
 end
-
+#action show entry
+def show
+	#
+	@entry=Entry.find(params[:id])
+    #show the user entries
+    @comments = @entry.comments.paginate(page: params[:page])
+end
 #private sestion
 private
 #define method to return new entry

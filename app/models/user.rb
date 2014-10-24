@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 #relationship with model Entry
-# dependent: :destroy arranges for the dependent microposts to be destroyed when the user itself is destroyed
+# dependent: :destroy arranges for the dependent entries to be destroyed when the user itself is destroyed
 has_many :entries, dependent: :destroy
+# dependent: :destroy arranges for the dependent comment to be destroyed when the user itself is destroyed
+has_many :comments, dependent: :destroy
 #make the relationship  betwwen user by using follwer as key
 has_many :active_relationships, class_name:  "Relationship", foreign_key: "follower_id", dependent: :destroy
 #make the relationship  betwwen user by using follwer as key

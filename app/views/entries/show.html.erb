@@ -1,0 +1,25 @@
+<% provide(:title, @entry.title) %>
+    		<% user=User.find(@entry.user_id)%>	
+			  <!--use method gravatar_for to show the image of user which location at app/helper/users_helper.rb-->
+			  <%= gravatar_for user %>
+			  <!--use to show user name-->
+			  <h3><%= user.name %></h3>
+			<br><br><br><br>
+			
+    <h4><%=@entry.title%></h4>
+    <!--show the body of entries-->
+    <%= @entry.body %>
+   <!--show the Image of entries-->
+   <br><%= image_tag @entry.picture.url if @entry.picture? %>
+  
+   <section class="comment_form">
+      <!--load file at app/view /shared/_user_info.html.erb-->
+        <%= render 'shared/comment_form' %>
+    </section>
+ 
+   <ol class="entries">
+      <!--load file at app/view/entries/_entry.html.erb-->
+        <%= render @comments %>
+      </ol>
+      <!--put slide bar to entries-->
+      <%= will_paginate @comments %>
