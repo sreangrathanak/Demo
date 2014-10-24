@@ -11,11 +11,18 @@
     <%= @entry.body %>
    <!--show the Image of entries-->
    <br><%= image_tag @entry.picture.url if @entry.picture? %>
-  
-   <section class="comment_form">
-      <!--load file at app/view /shared/_user_info.html.erb-->
-        <%= render 'shared/comment_form' %>
-    </section>
+      
+      
+      <%#=user.name%>
+      <%#=current_user.name%>
+      <%if !current_user.nil?%>
+        <% if user.following?(current_user) ||current_user?(user) || current_user.following?(user)%>      
+        <section class="comment_form">
+          <!--load file at app/view /shared/_user_info.html.erb-->
+          <%= render 'shared/comment_form' %>      
+        </section>      
+        <% end %>    
+      <%end%>
  
    <ol class="entries">
       <!--load file at app/view/entries/_entry.html.erb-->
@@ -23,3 +30,5 @@
       </ol>
       <!--put slide bar to entries-->
       <%= will_paginate @comments %>
+
+      <!--if current user is not user -->

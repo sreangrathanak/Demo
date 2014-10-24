@@ -9,4 +9,13 @@
   Date: <%= Date.parse (comment.created_at.to_s) %>
   <!--show the body of entries-->
   <br><%= comment.content %>
+  <% if signed_in? %>
+ 			<!--check user type-->
+ 			<%entry=comment.entry%>
+ 			<% if current_user?(entry.user) || current_user?(comment.user) %>
+    		| <%= link_to "Delete Comment", comment, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  
+  			<% end %>
+ 		<%end%>
 </li>

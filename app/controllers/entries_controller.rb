@@ -35,6 +35,7 @@ def show
     #show the user entries
     @comments = @entry.comments.paginate(page: params[:page])
 end
+
 #private sestion
 private
 #define method to return new entry
