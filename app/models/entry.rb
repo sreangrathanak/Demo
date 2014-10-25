@@ -6,7 +6,7 @@ class Entry < ActiveRecord::Base
   #set default by order
   default_scope -> { order('created_at DESC') }
   #Add picture when post entry
-  mount_uploader :picture, PictureUploader
+  #mount_uploader :picture, PictureUploader
   #must have user_id can =nil in field
   validates :user_id, presence: true
   #must be valid title and have length limit 140
@@ -14,7 +14,7 @@ class Entry < ActiveRecord::Base
   #must have valid body and have length limit 500
   validates :body, presence: true, length:{maximum:500}
   #should valid with image size
-  validate :picture_size
+  #validate :picture_size
 
   def Entry.from_users_followed_by (user)
     ##declare follow ids and init from user following ids
