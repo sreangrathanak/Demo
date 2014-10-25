@@ -10,7 +10,7 @@
   <%= truncate(entry.body, length:65) %>
   <%= link_to " Read more", entry, method: :get ,title: entry.title%>
   <!--show the Image of entries-->
-   <%= image_tag entry.picture.url if entry.picture? %>
+   <%#= image_tag entry.picture.url if entry.picture? %>
   </span>
   <!--show the date post of entries-->  
   <span class="timestamp">
