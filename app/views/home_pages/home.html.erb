@@ -26,7 +26,9 @@
 	<div class="center jumbotron">
   		<h1>Welcome to the My Demo App</h1>
   		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-	</div>
-	<%= link_to image_tag("rathanakjame.jpg", alt: "Rathanak logo"),
+	</div>    
+	<%#= link_to image_tag("rathanakjame.jpg", alt: "Rathanak logo"),
             'https://www.facebook.com/sreang.rathanak' %>
+            <h3>User Entry </h3>
+  <%= render 'shared/feed'%>
 <%end%>

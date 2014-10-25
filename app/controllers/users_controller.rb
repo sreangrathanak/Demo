@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   #put some permision before some action
   # add  ":following,:followers" if don't want non-sign user can view our follower following
-  before_action :signed_in_user, only:[:edit,:update, :destroy]
+  before_action :signed_in_user, only:[:index,:edit,:update, :destroy]
   #before_action :correct_user, only:[:edit,:update, :destroy]
   #to set only user admin can remove other user other current user cannot just remove comment under
   #before_action :admin_user,     only: :destroy

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   #get 'home_pages/about'
   get 'about'   => 'home_pages#about'
   #get 'home_pages/contact'
+  get 'all_entries'   => 'home_pages#all_entries'
+  #get 'home_pages/contact'
   get 'contact' => 'home_pages#contact'
   #get 'users/new'
   get 'signup' =>'users#new'
