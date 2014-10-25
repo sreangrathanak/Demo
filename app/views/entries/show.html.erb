@@ -1,26 +1,31 @@
 <% provide(:title, @entry.title) %>
     		<% user=User.find(@entry.user_id)%>	
-			  <!--use method gravatar_for to show the image of user which location at app/helper/users_helper.rb-->
-			  <%= gravatar_for user %>
-			  <!--use to show user name-->
-			  <h3><%= user.name %></h3>
-			<br><br><br>
+
     <center><h4><%=@entry.title%></h4></center>
     <!--show the body of entries-->
     <%= @entry.body %>
    <!--show the Image of entries-->
-   <br><%= image_tag @entry.picture.url if @entry.picture? %>
-      
-      
-      <%#=user.name%>
-      <%#=current_user.name%>
-      <%if !current_user.nil?%>
+   <br><%#= image_tag @entry.picture.url if @entry.picture? %>
+            
+        <!--use method gravatar_for to show the image of user which location at app/helper/users_helper.rb-->
+        Posted date :<%= Date.parse (@entry.created_at.to_s) %>
+        <section>          
+          <%#= gravatar_for ( user,10 ) %>           
+          <%= link_to gravatar_for(user, size: 20), user %>
+          <!--use to show user name-->
+          <%= link_to user.name, user %>
+        </section>        
+      <%if signed_in?%>
         <% if user.following?(current_user) ||current_user?(user) || current_user.following?(user)%>      
         <section class="comment_form">
           <!--load file at app/view /shared/_user_info.html.erb-->
           <%= render 'shared/comment_form' %>      
-        </section>      
-        <% end %>    
+        </section>
+        <%else%>
+        <h6> * Connot make a comment unless you follow this user</h6>
+        <% end %> 
+      <%else%> 
+        <h6>Connot make a comment unless you <%= link_to "Sign in", signin_path %> or<%= link_to "Sign up", signup_path %></h6>
       <%end%>
  
    <ol class="entries">

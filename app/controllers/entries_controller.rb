@@ -41,7 +41,7 @@ private
 #define method to return new entry
 def entry_params
 	#return params of entry with following tile body and date
-	params.require(:entry).permit(:title,:body,:picture,date_post: Time.zone.now )
+	params.require(:entry).permit(:title,:body)
 end
 #define method to check is the user is post that entry or not
 def correct_user

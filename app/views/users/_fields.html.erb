@@ -3,13 +3,13 @@
       <%= render 'shared/error_messages' ,object: f.object %>
       <!--add user name label and text field user name into update form-->
       <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name, class: 'form-control field_info' %>
       <!--add user email label and text field user email into update form-->
       <%= f.label :email %>
-      <%= f.text_field :email, class: 'form-control' %>
+      <%= f.text_field :email, class: 'form-control field_info' %>
       <!--add user pass label and password field user password into update form-->
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control field_info' %>
       <!--add user password confirmation label and password field user password confirmation into update form-->
       <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.password_field :password_confirmation, class: 'form-control field_info' %>

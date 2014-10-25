@@ -1,5 +1,5 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<h1 class="account_info">Sign up</h1>
 <!--Set some style to form-->
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -8,7 +8,7 @@
 			<!--load file at app/view/users/_fields/html/erb to use in form-->
                   <%=render 'fields', f: f%>
       		<!--create button sign up in the form-->
-      		<%= f.submit "Create my account", class: "btn btn-primary" %>
+      		<%= f.submit "Create my account", class: "btn btn-primary btn_commit_signin" %>
 		<%end%>
 	</div>
 </div>

@@ -1,6 +1,6 @@
 <!--set tilte to page-->
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<h1 class="account_info">Update your profile</h1>
 <!--set some style to update form-->
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -9,7 +9,7 @@
     <!--load file at app/view/users/_fields/html/erb to use in form-->
      <%=render 'fields', f: f%>
       <!--add button update into update form-->
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-primary btn_commit" %>
     <% end %>
     <!--set image style-->
     <div class="gravatar_edit">
